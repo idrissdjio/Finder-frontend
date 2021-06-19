@@ -10,8 +10,9 @@ import HomeScreen from '../screens/HomeScreen'
 import RegisterScreen from '../screens/RegisterScreen';
 import LoginScreen from '../screens/LoginScreen'
 import {withCookies, useCookies} from 'react-cookie';
-
-
+import ItemDetails from '../screens/ItemDetails';
+import AddItemLost from '../screens/AddItemLost';
+import AddItemFound from '../screens/AddItemFound';
 
 
 const Stack = createStackNavigator();
@@ -36,12 +37,15 @@ function MyNavigations(props) {
         }}
         
       >
-        <Stack.Screen name='Home' component={HomeScreen} options={{headerLeft: null}} />
-        <Stack.Screen name="Lost" component={LostScreen} options={{title: 'Lost Items'}}/>
-        <Stack.Screen name="Found" component={FoundScreen} options={{title: 'Found Items'}}/>
+        <Stack.Screen name="AddItemLost" component={AddItemLost} options={{title: 'Add Lost Item'}}/>
+        <Stack.Screen name="AddItemFound" component={AddItemFound} options={{title: 'Add Found Item'}}/>
         <Stack.Screen name="Account" component={AccountScreen} options={{title: 'Account'}}/>
-        <Stack.Screen name="MyPosts" component={MyPostsScreen} options={{title: 'My Posts'}}/>
+        <Stack.Screen name="Found" component={FoundScreen} options={{title: 'Found Items'}}/>
+        <Stack.Screen name='Home' component={HomeScreen} options={{headerLeft: null}} />
+        <Stack.Screen name="ItemDetails" component={ItemDetails} options={{title: 'Item Details'}}/>
         <Stack.Screen name="Login" component={LoginScreen} options={{title: 'Login'}}/>
+        <Stack.Screen name="Lost" component={LostScreen} options={{title: 'Lost Items'}}/>
+        <Stack.Screen name="MyPosts" component={MyPostsScreen} options={{title: 'My Posts'}}/>
         <Stack.Screen name="Register" component={RegisterScreen} options={{title: 'Register', headerLeft: null}}/>
       </Stack.Navigator>
     </NavigationContainer>

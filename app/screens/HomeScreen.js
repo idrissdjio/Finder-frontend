@@ -3,10 +3,11 @@ import {View, Image, StyleSheet, Text} from 'react-native'
 import Box from '../Utilities/Box';
 import Screen from '../Utilities/Screen';
 import LostScreen from './LostScreen';
+import colors from '../config/colors';
 
 function HomeScreen({navigation}) {
     return (
-        <Screen>
+        <Screen style={styles.screen}>
             <View style={styles.header}>
                 <Image source={require('../../assets/logo.png')} style={styles.logo}/>
                 <Text style={styles.textlogo}>Welcome to Finder!</Text>
@@ -46,6 +47,9 @@ const styles = StyleSheet.create({
         width: 80,
         height: 80,
         marginBottom: 5,
+    },
+    screen: {
+        backgroundColor: colors.logres,
     },
     textlogo: {
         fontSize: 20,

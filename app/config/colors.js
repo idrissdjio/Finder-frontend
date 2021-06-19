@@ -8,4 +8,8 @@ export default {
   dark: "#0c0c0c",
   danger: "#ff5252",
   blue: '#0041C2',
+  background: '#F0EBCC',
+  loadingcolor: "#5500dc",
+  logres: '#EEEEEE',
+  dodgerblue: 'dodgerblue',
 };

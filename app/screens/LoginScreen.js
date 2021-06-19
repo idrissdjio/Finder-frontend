@@ -2,19 +2,19 @@ import React, { useEffect, useState } from 'react';
 import {StyleSheet, View, Image, Text, Button, TouchableHighlight } from 'react-native';
 import AppTextInput from '../Utilities/AppTextInput';
 import AppButton from '../Utilities/Button';
-import colors from '../config/colors';
 import {withCookies, useCookies} from 'react-cookie';
-
 import Screen from '../Utilities/Screen'
+import colors from '../config/colors'
+import {HOST} from '../Hosts/HOST_WITH_PORT'
 
 function LoginScreen({navigation}) {
-    const [phone, setPhone] = useState('670789253')
+    const [phone, setPhone] = useState('13087557262')
     const [password, setPassword] = useState()
     const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
 
     function handleLogin() {
 
-        fetch('http://192.168.56.1:8000/account/login/', {
+        fetch(`${HOST}/account/login/`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -23,13 +23,14 @@ function LoginScreen({navigation}) {
                 })
             }).then( resp => resp.json())
             .then( res => {
-                console.log(res.token);
+                // console.log(res.token);
                 if(res.token){
                     setCookie('finder-token', res.token)
                     navigation.navigate('Home')
                 }
                 else{
                     navigation.push('Login')
+                
                 }
                 
             })
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
     screen: {
         alignItems: 'center',
         padding: 10,
-        backgroundColor: '#EEEEEE'
+        backgroundColor: colors.logres
     }
 })
 

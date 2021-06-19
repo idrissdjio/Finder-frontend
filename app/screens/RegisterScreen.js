@@ -3,6 +3,8 @@ import { Button, Text, View, StyleSheet, Image } from 'react-native';
 import AppTextInput from '../Utilities/AppTextInput';
 import AppButton from '../Utilities/Button';
 import Screen from '../Utilities/Screen'
+import colors from '../config/colors'
+import {HOST} from '../Hosts/HOST_WITH_PORT'
 
 function RegisterScreen({navigation}) {
 
@@ -13,7 +15,7 @@ function RegisterScreen({navigation}) {
 
     function handleRegister() {
 
-        fetch('http://192.168.56.1:8000/account/register/', {
+        fetch(`${HOST}/account/register/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -80,7 +82,8 @@ const styles = StyleSheet.create({
     screen: {
         alignItems: 'center',
         padding: 10,
-        backgroundColor: '#EEEEEE'
+        backgroundColor: colors.logres,
+        // backgroundColor: '#F0EBCC'
     }
 })
 
