@@ -9,10 +9,11 @@ import MyPostsScreen from '../screens/MyPostsScreen'
 import HomeScreen from '../screens/HomeScreen'
 import RegisterScreen from '../screens/RegisterScreen';
 import LoginScreen from '../screens/LoginScreen'
-import {withCookies, useCookies} from 'react-cookie';
 import ItemDetails from '../screens/ItemDetails';
 import AddItemLost from '../screens/AddItemLost';
 import AddItemFound from '../screens/AddItemFound';
+
+import {CookiesProvider, useCookies, withCookies} from 'react-cookie';
 
 
 const Stack = createStackNavigator();

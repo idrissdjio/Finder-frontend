@@ -4,8 +4,13 @@ import Box from '../Utilities/Box';
 import Screen from '../Utilities/Screen';
 import LostScreen from './LostScreen';
 import colors from '../config/colors';
+import {CookiesProvider, useCookies, withCookies} from 'react-cookie';
 
-function HomeScreen({navigation}) {
+
+function HomeScreen({route, navigation}) {
+
+    const {token, currentID} = route.params
+
     return (
         <Screen style={styles.screen}>
             <View style={styles.header}>
@@ -14,12 +19,12 @@ function HomeScreen({navigation}) {
             </View>
             <View style={styles.body}>
                 <View style={styles.firstrow}>
-                    <Box color='dodgerblue' text='Lost' onpress={() => navigation.navigate('Lost')}/>
-                    <Box color='tomato' text='Found' onpress={() => navigation.navigate('Found')}/>
+                    <Box color='dodgerblue' text='Lost' onpress={() => navigation.navigate('Lost', {currentID: currentID})}/>
+                    <Box color='#fc5c65' text='Found' onpress={() => navigation.navigate('Found', {currentID: currentID})}/>
                 </View>
                 <View style={styles.firstrow}>
-                    <Box color='tomato' text='My Posts' onpress={() => navigation.navigate('MyPosts')}/>
-                    <Box color='dodgerblue' text='Account' onpress={() => navigation.navigate('Account')}/>
+                    <Box color='#fc5c65' text='My Posts' onpress={() => navigation.navigate('MyPosts', {currentID: currentID})}/>
+                    <Box color='dodgerblue' text='Account' onpress={() => navigation.navigate('Account', {token: token})}/>
                 </View>
             </View>
         </Screen>
@@ -57,4 +62,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default HomeScreen;
+export default withCookies(HomeScreen);

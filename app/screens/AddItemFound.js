@@ -10,8 +10,10 @@ import AppButton from '../Utilities/Button';
 import { HOST } from '../Hosts/HOST_WITH_PORT';
 
 
+function AddItemFound({route, navigation}) {
 
-function AddItemFound({navigation}) {
+    const {currentID} = route.params
+    // console.log(currentID)
 
     const [image, setImage] = useState();
     const [name, setName] = useState('');
@@ -37,7 +39,7 @@ function AddItemFound({navigation}) {
         formData.append("city_item",city);
         formData.append("category_item", category);
         formData.append("picking_location", picking_location);
-        formData.append("user_profile", '1');
+        formData.append("user_profile", currentID);
         
 
         fetch(`${HOST}/founderapp/postfound/?expand=category,city_lost`, {
@@ -48,7 +50,7 @@ function AddItemFound({navigation}) {
             body: formData
         }).then(response => response.json())
         .then(result => {
-            console.log(result)
+            // console.log(result)
             navigation.navigate('Home')
         })
         .catch(err => console.log(err))
@@ -94,9 +96,9 @@ function AddItemFound({navigation}) {
                 <AppTextInput icon="smart-card" onChangeText={name => setName(name)} value={name} placeholder="name on item..."/>
                 <AppTextInput icon="card-account-details" onChangeText={description => setDescription(description)} value={description} placeholder="description..." multiline={true}/>
                 <AppTextInput icon="contacts" onChangeText={contact => setContact(contact)} value={contact} placeholder="my contact..."/>
-                <AppTextInput icon="city" onChangeText={city => setCity(city)} value={city} placeholder="Lost City..."/>
+                <AppTextInput icon="city" onChangeText={city => setCity(city)} value={city} placeholder="Found City..."/>
                 <AppTextInput icon="home" onChangeText={picking_location => setPicking_location(picking_location)} value={picking_location} placeholder="Picking Location..."/>
-                <AppTextInput icon="calendar-month" onChangeText={date => setDate(date)} value={date} placeholder="Lost date..."/>
+                <AppTextInput icon="calendar-month" onChangeText={date => setDate(date)} value={date} placeholder="Found date..."/>
                 <AppTextInput icon="contacts" onChangeText={category => setCategory(category)} value={category} placeholder="category: ID_CARD,book,phone..."/>
                 <AppButton title="POST" color={colors.dodgerblue} onPress={handlePost}/>
             </Screen>

@@ -10,7 +10,10 @@ import {HOST} from '../Hosts/HOST_WITH_PORT'
 
 
 
-function FoundScreen({navigation}) {
+function FoundScreen({route, navigation}) {
+
+    const {currentID} = route.params
+    console.log(currentID)
 
     const Item = ({item}) => (
         <TouchableWithoutFeedback onPress={() => navigation.navigate('ItemDetails', {
@@ -22,7 +25,7 @@ function FoundScreen({navigation}) {
             city_item: item.city_item,
             date_lost: item.date_lost,
             description_item: item.description_of_item,
-            picking_location: picking_location,
+            picking_location: item.picking_location,
         }) }>
             <View style={styles.items} >
                 <Image source={{uri: item.item_picture}} style={styles.image}/>
@@ -126,7 +129,7 @@ function FoundScreen({navigation}) {
                renderItem={renderItem} 
                keyExtractor={item => item.id.toString()}
             />
-            <TouchableWithoutFeedback style={styles.material} onPress={() => navigation.navigate('AddItemFound')}>
+            <TouchableWithoutFeedback style={styles.material} onPress={() => navigation.navigate('AddItemFound', {currentID: currentID})}>
                 <MaterialCommunityIcons name="plus-circle-outline" size={70} color={colors.blue} style={styles.icon} />
             </TouchableWithoutFeedback>
         </Screen>

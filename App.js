@@ -9,6 +9,7 @@ import FoundScreen from './app/screens/FoundScreen';
 import LostScreen from './app/screens/LostScreen';
 import ItemDetails from './app/screens/ItemDetails';
 import AddItemLost from './app/screens/AddItemLost';
+import AccountScreen from './app/screens/AccountScreen';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ function App() {
       {/* <FoundScreen/> */}
       {/* <ItemDetails/> */}
       {/* <AddItem/> */}
+      {/* <AccountScreen/> */}
     </CookiesProvider>
     
   )

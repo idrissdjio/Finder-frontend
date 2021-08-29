@@ -10,7 +10,9 @@ import {HOST} from '../Hosts/HOST_WITH_PORT'
 
 
 
-function LostScreen({navigation}) {
+function LostScreen({route, navigation}) {
+
+    const {currentID} = route.params
 
     const Item = ({item}) => (
         <TouchableWithoutFeedback onPress={() => navigation.navigate('ItemDetails', {
@@ -125,7 +127,7 @@ function LostScreen({navigation}) {
                renderItem={renderItem} 
                keyExtractor={item => item.id.toString()}
             />
-            <TouchableWithoutFeedback style={styles.material} onPress={() => navigation.navigate('AddItemLost')}>
+            <TouchableWithoutFeedback style={styles.material} onPress={() => navigation.navigate('AddItemLost', {currentID: currentID})}>
                 <MaterialCommunityIcons name="plus-circle-outline" size={70} color={colors.blue} style={styles.icon} />
             </TouchableWithoutFeedback>
         </Screen>

@@ -20,7 +20,7 @@ function ItemDetails({route, navigation}) {
 
     const API_ENDPOINT = 'http://192.168.56.1:8000'
 
-    const {itemId, category_item, name_on_the_item, item_picture, description_item, city_item, date_lost, contact} = route.params
+    const {itemId, category_item, name_on_the_item, item_picture, description_item, city_item, date_lost, contact, picking_location=''} = route.params
     console.log(item_picture)
 
 
@@ -34,6 +34,7 @@ function ItemDetails({route, navigation}) {
                 <Text style={styles.text}><Text style={styles.textAttribute}>City Lost: </Text>{city_item}</Text>
                 <Text style={styles.text}><Text style={styles.textAttribute}>contact:   </Text>{contact}</Text>
                 <Text style={styles.text}><Text style={styles.textAttribute}>Lost date: </Text>{date_lost}</Text>
+                <Text style={styles.text}><Text style={styles.textAttribute}>Picking Location: </Text>{picking_location}</Text>
             </View>
         </ScrollView>
     );

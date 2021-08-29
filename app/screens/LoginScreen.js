@@ -8,9 +8,10 @@ import colors from '../config/colors'
 import {HOST} from '../Hosts/HOST_WITH_PORT'
 
 function LoginScreen({navigation}) {
-    const [phone, setPhone] = useState('13087557262')
-    const [password, setPassword] = useState()
+    const [phone, setPhone] = useState('')
+    const [password, setPassword] = useState('')
     const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
+    const [errorMessage, setErrorMessage] = useState('');
 
     function handleLogin() {
 
@@ -23,14 +24,13 @@ function LoginScreen({navigation}) {
                 })
             }).then( resp => resp.json())
             .then( res => {
-                // console.log(res.token);
+                console.log(res);
                 if(res.token){
                     setCookie('finder-token', res.token)
-                    navigation.navigate('Home')
+                    navigation.navigate('Home', {token: res.token})
                 }
                 else{
-                    navigation.push('Login')
-                
+                    setErrorMessage('The credentials you entered are incorrect!');
                 }
                 
             })
@@ -45,12 +45,13 @@ function LoginScreen({navigation}) {
                 <Text style={styles.logotext}>find loss stuff here</Text>
             </View>
             <View style={styles.fields}>
-                <AppTextInput icon="phone" onChangeText={phone => setPhone(phone)} value={phone} placeholder="phone"/>
+                <AppTextInput icon="phone" onChangeText={phone => setPhone(phone)} value={phone} placeholder="phone number"/>
                 <AppTextInput icon="lock" secureTextEntry textContentType='password' onChangeText={password => setPassword(password)} value={password} placeholder="password"/>
                 <AppButton title="Login" onPress={handleLogin} color='dodgerblue'/>
+                <Text style={styles.errorMessage}>{errorMessage}</Text>
                 <View style={styles.downview}>
-                    <Text style={styles.forgot} onPress={() => console.log('forgot password')}>forgot password?</Text>
-                    <Text style={styles.register} onPress={() => navigation.navigate('Register')}>register here</Text>
+                    {/* <Text style={styles.forgot} onPress={() => console.log('forgot password')}>forgot password?</Text> */}
+                    <Text style={styles.register} onPress={() => navigation.navigate('Register')}>create account here</Text>
                 </View>
             </View>
         </Screen>
@@ -59,7 +60,12 @@ function LoginScreen({navigation}) {
 
 const styles = StyleSheet.create({
     downview: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
+    errorMessage: {
+        color: 'red',
+        marginHorizontal: '5%'
     },
     forgot: {
         paddingTop: 10,
@@ -84,7 +90,7 @@ const styles = StyleSheet.create({
         top: 230,
     },
     register: {
-        paddingLeft: '32%',
+        // paddingLeft: '32%',
         paddingTop: 10,
         fontSize: 18,
     },

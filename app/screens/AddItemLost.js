@@ -8,10 +8,14 @@ import colors from '../config/colors';
 import AppTextInput from '../Utilities/AppTextInput';
 import AppButton from '../Utilities/Button';
 import { HOST } from '../Hosts/HOST_WITH_PORT';
+import {currentUserID} from './AccountScreen'
 
 
 
-function AddItemLost({navigation}) {
+function AddItemLost({route, navigation}) {
+
+    const {currentID} = route.params
+    // console.log(currentID)
 
     const [image, setImage] = useState();
     const [name, setName] = useState('');
@@ -35,7 +39,7 @@ function AddItemLost({navigation}) {
         formData.append('contact', contact);
         formData.append("city_item",city);
         formData.append("category_item", category);
-        formData.append("user_profile", '1');
+        formData.append("user_profile", currentID);
         
 
         fetch(`${HOST}/searchapp/lost_items/?expand=category,city_lost`, {
@@ -46,7 +50,7 @@ function AddItemLost({navigation}) {
             body: formData
         }).then(response => response.json())
         .then(result => {
-            console.log(result)
+            // console.log(result)
             navigation.navigate('Home')
         })
         .catch(err => console.log(err))

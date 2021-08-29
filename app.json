@@ -19,16 +19,19 @@
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
-        "NSAppTransportSecurity" : {
-          "NSAllowsArbitraryLoads" : true
+        "NSAppTransportSecurity": {
+          "NSAllowsArbitraryLoads": true
         }
-      }
+      },
+      "bundleIdentifier": "com.edevx.finder"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.edevx.finder",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
