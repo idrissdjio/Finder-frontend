@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import {Text, View, StyleSheet, Image, ScrollView, ActivityIndicator} from 'react-native'
 import colors from '../config/colors';
 
-const item = {
-    imageSource: require('../../assets/me.png'),
-    name_on_the_item: 'Chris kenfack',
-    description_item: 'a tall nigga with a brown hair, blue eyes, bearless a tall nigga with a brown hair, blue eyes, bearless',
-    contact: '677582015',
-    date_lost: '2021-03-04T12:33:00Z',
-    create_on: '2021-05-10T14:53:40.397711Z',
-    city_item: 'Bertoua',
-    category_item: 'ID_CARD',
-}
+// const item = {
+//     imageSource: require('../../assets/me.png'),
+//     name_on_the_item: 'Chris kenfack',
+//     description_item: 'a tall nigga with a brown hair, blue eyes, bearless a tall nigga with a brown hair, blue eyes, bearless',
+//     contact: '677582015',
+//     date_lost: '2021-03-04T12:33:00Z',
+//     create_on: '2021-05-10T14:53:40.397711Z',
+//     city_item: 'Bertoua',
+//     category_item: 'ID_CARD',
+// }
 
 function ItemDetails({route, navigation}) {
 
